@@ -1,8 +1,8 @@
 //
 //  WeatherDescriptionStyle.swift
-//  WeatherManCLI
+//  WeatherMan-Mac
 //
-//  Created by ERIC DEJONCKHEERE on 11/06/2016.
+//  Created by ERIC DEJONCKHEERE on 16/07/2016.
 //  Copyright © 2016 AYA.io. All rights reserved.
 //
 

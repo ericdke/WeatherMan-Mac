@@ -1,14 +1,14 @@
 //
 //  Meteo.swift
-//  WeatherManCLI
+//  WeatherMan-Mac
 //
-//  Created by ERIC DEJONCKHEERE on 07/06/2016.
+//  Created by ERIC DEJONCKHEERE on 16/07/2016.
 //  Copyright © 2016 AYA.io. All rights reserved.
 //
 
 import Cocoa
 
-public class Meteo {
+public class WeatherMan {
     
     private let appID: String
     public var history: [WeatherResult] = []
