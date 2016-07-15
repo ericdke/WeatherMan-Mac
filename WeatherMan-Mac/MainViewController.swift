@@ -66,18 +66,8 @@ class MainViewController: NSViewController, CLLocationManagerDelegate {
         log("FETCHING API RESPONSE")
         meteo.currentWeather(city: city, country: country) { (result) in
             if result.success {
-                log("API RESPONSE OK")
-                if let w = result.weather {
-                    DispatchQueue.main.sync(execute: {
-                        self.mainView.weather.stringValue = self.descriptor.describe(weather: w, style: .gui)
-                        self.mainView.temp.stringValue = "\(w.celsius) °C"
-                    })
-                    self.meteo.getIcon(url: w.iconURL, completion: { (icon) in
-                        DispatchQueue.main.sync(execute: {
-                            self.mainView.iconView.image = icon
-                        })
-                    })
-                }
+                log("RECEIVED API RESPONSE")
+                self.populateView(with: result)
             } else {
                 if let error = result.error {
                     log(error)
@@ -85,6 +75,22 @@ class MainViewController: NSViewController, CLLocationManagerDelegate {
                     log("UNKNOWN ERROR IN \(#function)")
                 }
             }
+        }
+    }
+    
+    private func populateView(with result: WeatherResult) {
+        if let w = result.weather {
+            DispatchQueue.main.sync(execute: {
+                self.mainView.weather.stringValue = self.descriptor.describe(weather: w, style: .gui)
+                self.mainView.temp.stringValue = "\(w.celsius) °C"
+            })
+            self.meteo.getIcon(url: w.iconURL, completion: { (icon) in
+                DispatchQueue.main.sync(execute: {
+                    self.mainView.iconView.image = icon
+                })
+            })
+        } else {
+            log("INVALID API RESPONSE")
         }
     }
     
