@@ -21,6 +21,7 @@
 		C71505121D3918C900D60ED7 /* WeatherResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = C71505111D3918C900D60ED7 /* WeatherResult.swift */; };
 		C71505161D39657500D60ED7 /* Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = C71505151D39657500D60ED7 /* Alert.swift */; };
 		C71505181D397A0600D60ED7 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C71505171D397A0600D60ED7 /* MainViewController.swift */; };
+		C715051A1D3985AC00D60ED7 /* Globals.swift in Sources */ = {isa = PBXBuildFile; fileRef = C71505191D3985AC00D60ED7 /* Globals.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,6 +41,7 @@
 		C71505111D3918C900D60ED7 /* WeatherResult.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeatherResult.swift; sourceTree = "<group>"; };
 		C71505151D39657500D60ED7 /* Alert.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Alert.swift; sourceTree = "<group>"; };
 		C71505171D397A0600D60ED7 /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		C71505191D3985AC00D60ED7 /* Globals.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Globals.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -75,6 +77,7 @@
 				C71505091D3918B800D60ED7 /* SwiftyJSON.swift */,
 				C71505031D39189100D60ED7 /* CurrentWeather.swift */,
 				C71505051D39189C00D60ED7 /* Extensions.swift */,
+				C71505191D3985AC00D60ED7 /* Globals.swift */,
 				C71505071D3918B800D60ED7 /* Meteo.swift */,
 				C71505081D3918B800D60ED7 /* NetworkResult.swift */,
 				C71505111D3918C900D60ED7 /* WeatherResult.swift */,
@@ -168,6 +171,7 @@
 				C71505101D3918B800D60ED7 /* WeatherDescriptor.swift in Sources */,
 				C715050D1D3918B800D60ED7 /* NetworkResult.swift in Sources */,
 				C71505121D3918C900D60ED7 /* WeatherResult.swift in Sources */,
+				C715051A1D3985AC00D60ED7 /* Globals.swift in Sources */,
 				C71505061D39189C00D60ED7 /* Extensions.swift in Sources */,
 				C71505181D397A0600D60ED7 /* MainViewController.swift in Sources */,
 				C715050F1D3918B800D60ED7 /* WeatherDescriptionStyle.swift in Sources */,

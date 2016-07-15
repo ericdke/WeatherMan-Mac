@@ -10,6 +10,6 @@ import Foundation
 
 public struct NetworkResult {
     let success: Bool
-    let json: JSON!  // "JSON" est le type des objets créés par SwiftyJSON
+    let json: JSON!
     let error: NSError?
 }

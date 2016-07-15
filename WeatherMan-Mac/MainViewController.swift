@@ -36,20 +36,20 @@ class MainViewController: NSViewController, CLLocationManagerDelegate {
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
         switch status {
         case .authorizedAlways:
-            NSLog("%@", "LOCATION SERVICES: AUTHORIZED")
+            log("LOCATION SERVICES: AUTHORIZED")
         case .restricted, .denied:
             Alert.criticalInfo(title: "Not authorized",
                             text: "Location services have been denied for this app - it can't run and will quit immediately.")
             NSApplication.shared().terminate(nil)
         case .notDetermined:
-            NSLog("%@", "LOCATION SERVICES: STATUS UNKNOWN")
+            log("LOCATION SERVICES: STATUS UNKNOWN")
         default:
-            NSLog("%@", "LOCATION SERVICES: DAFUQ?")
+            log("LOCATION SERVICES: DAFUQ?")
         }
     }
     
     func locationManager(_ manager: CLLocationManager, didUpdateTo newLocation: CLLocation, from oldLocation: CLLocation) {
-        NSLog("%@", "LOCATION SERVICES: NEW LOCATION UPDATE")
+        log("LOCATION SERVICES: NEW LOCATION UPDATE")
         geoCoder.reverseGeocodeLocation(newLocation) { (placemarks, error) in
             if let places = placemarks, place = places.last where error == nil {
                 if let loc = place.locality, c = place.country {
@@ -57,16 +57,16 @@ class MainViewController: NSViewController, CLLocationManagerDelegate {
                     self.getWeather(city: loc, country: c)
                 }
             } else {
-                NSLog("%@", "UNKNOWN ERROR IN \(#function)")
+                log("UNKNOWN ERROR IN \(#function)")
             }
         }
     }
     
     private func getWeather(city: String, country: String) {
-        NSLog("%@", "FETCHING API RESPONSE")
+        log("FETCHING API RESPONSE")
         meteo.currentWeather(city: city, country: country) { (result) in
             if result.success {
-                NSLog("%@", "API RESPONSE OK")
+                log("API RESPONSE OK")
                 if let w = result.weather {
                     DispatchQueue.main.sync(execute: {
                         self.mainView.weather.stringValue = self.descriptor.describe(weather: w, style: .gui)
@@ -80,9 +80,9 @@ class MainViewController: NSViewController, CLLocationManagerDelegate {
                 }
             } else {
                 if let error = result.error {
-                    NSLog("%@", error)
+                    log(error)
                 } else {
-                    NSLog("%@", "UNKNOWN ERROR IN \(#function)")
+                    log("UNKNOWN ERROR IN \(#function)")
                 }
             }
         }
