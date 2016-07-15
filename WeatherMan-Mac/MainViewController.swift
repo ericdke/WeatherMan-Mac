@@ -86,9 +86,8 @@ class MainViewController: NSViewController, CLLocationManagerDelegate {
     
     private func populateView(with result: WeatherResult) {
         if let w = result.weather {
-            let desc = descriptor.describe(weather: w, style: .gui)
             DispatchQueue.main.sync(execute: {
-                mainView.weather.stringValue = desc
+                mainView.weather.stringValue = descriptor.describe(weather: w)
                 mainView.temp.stringValue = "\(w.celsius) °C"
             })
             weatherMan.getIcon(url: w.iconURL, completion: { (icon) in
