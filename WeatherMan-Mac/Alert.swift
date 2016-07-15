@@ -28,4 +28,9 @@ class Alert {
         myPopup.addButton(withTitle: "OK")
         myPopup.runModal()
     }
+    
+    class func denied() {
+        criticalInfo(title: "Not authorized",
+                     text: "Location services have been denied for this app - it can't run and will quit immediately.")
+    }
 }

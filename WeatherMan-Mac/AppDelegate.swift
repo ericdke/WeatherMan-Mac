@@ -16,6 +16,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     func applicationWillFinishLaunching(_ notification: Notification) {
         window.titlebarAppearsTransparent = true
         window.isMovableByWindowBackground = true
+        window.orderFront(nil)
     }
 
     func applicationDidFinishLaunching(_ aNotification: Notification) {

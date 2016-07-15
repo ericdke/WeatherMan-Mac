@@ -33,13 +33,13 @@ class MainViewController: NSViewController, CLLocationManagerDelegate {
         manager.startUpdatingLocation()
     }
     
-    func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
+    func locationManager(_ manager: CLLocationManager,
+                         didChangeAuthorization status: CLAuthorizationStatus) {
         switch status {
         case .authorizedAlways:
             log("LOCATION SERVICES: AUTHORIZED")
         case .restricted, .denied:
-            Alert.criticalInfo(title: "Not authorized",
-                            text: "Location services have been denied for this app - it can't run and will quit immediately.")
+            Alert.denied()
             NSApplication.shared().terminate(nil)
         case .notDetermined:
             log("LOCATION SERVICES: STATUS UNKNOWN")
@@ -48,16 +48,22 @@ class MainViewController: NSViewController, CLLocationManagerDelegate {
         }
     }
     
-    func locationManager(_ manager: CLLocationManager, didUpdateTo newLocation: CLLocation, from oldLocation: CLLocation) {
+    func locationManager(_ manager: CLLocationManager,
+                         didUpdateTo newLocation: CLLocation,
+                         from oldLocation: CLLocation) {
         log("LOCATION SERVICES: NEW LOCATION UPDATE")
         geoCoder.reverseGeocodeLocation(newLocation) { (placemarks, error) in
             if let places = placemarks, place = places.last where error == nil {
-                if let loc = place.locality, c = place.country {
+                if let pl = place.locality, pc = place.country {
                     self.manager.stopUpdatingLocation()
-                    self.getWeather(city: loc, country: c)
+                    self.getWeather(city: pl, country: pc)
                 }
             } else {
-                log("UNKNOWN ERROR IN \(#function)")
+                if let error = error {
+                    log(error)
+                } else {
+                    log("UNKNOWN ERROR IN \(#function)")
+                }
             }
         }
     }
@@ -80,9 +86,10 @@ class MainViewController: NSViewController, CLLocationManagerDelegate {
     
     private func populateView(with result: WeatherResult) {
         if let w = result.weather {
+            let desc = descriptor.describe(weather: w, style: .gui)
             DispatchQueue.main.sync(execute: {
-                self.mainView.weather.stringValue = self.descriptor.describe(weather: w, style: .gui)
-                self.mainView.temp.stringValue = "\(w.celsius) °C"
+                mainView.weather.stringValue = desc
+                mainView.temp.stringValue = "\(w.celsius) °C"
             })
             self.meteo.getIcon(url: w.iconURL, completion: { (icon) in
                 DispatchQueue.main.sync(execute: {
