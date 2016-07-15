@@ -22,6 +22,7 @@
 		C71505161D39657500D60ED7 /* Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = C71505151D39657500D60ED7 /* Alert.swift */; };
 		C71505181D397A0600D60ED7 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C71505171D397A0600D60ED7 /* MainViewController.swift */; };
 		C715051A1D3985AC00D60ED7 /* Globals.swift in Sources */ = {isa = PBXBuildFile; fileRef = C71505191D3985AC00D60ED7 /* Globals.swift */; };
+		C71DE0A21D399C0900F20212 /* AppStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = C71DE0A11D399C0900F20212 /* AppStatus.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -42,6 +43,7 @@
 		C71505151D39657500D60ED7 /* Alert.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Alert.swift; sourceTree = "<group>"; };
 		C71505171D397A0600D60ED7 /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		C71505191D3985AC00D60ED7 /* Globals.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Globals.swift; sourceTree = "<group>"; };
+		C71DE0A11D399C0900F20212 /* AppStatus.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppStatus.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -84,6 +86,7 @@
 				C715050A1D3918B800D60ED7 /* WeatherDescriptionStyle.swift */,
 				C715050B1D3918B800D60ED7 /* WeatherDescriptor.swift */,
 				C71505151D39657500D60ED7 /* Alert.swift */,
+				C71DE0A11D399C0900F20212 /* AppStatus.swift */,
 				C71504F61D390C4000D60ED7 /* Assets.xcassets */,
 				C71504F81D390C4000D60ED7 /* MainMenu.xib */,
 				C71504F41D390C4000D60ED7 /* AppDelegate.swift */,
@@ -172,6 +175,7 @@
 				C715050D1D3918B800D60ED7 /* NetworkResult.swift in Sources */,
 				C71505121D3918C900D60ED7 /* WeatherResult.swift in Sources */,
 				C715051A1D3985AC00D60ED7 /* Globals.swift in Sources */,
+				C71DE0A21D399C0900F20212 /* AppStatus.swift in Sources */,
 				C71505061D39189C00D60ED7 /* Extensions.swift in Sources */,
 				C71505181D397A0600D60ED7 /* MainViewController.swift in Sources */,
 				C715050F1D3918B800D60ED7 /* WeatherDescriptionStyle.swift in Sources */,
@@ -326,6 +330,7 @@
 				C71505001D390C4000D60ED7 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

@@ -37,21 +37,21 @@ class MainViewController: NSViewController, CLLocationManagerDelegate {
                          didChangeAuthorization status: CLAuthorizationStatus) {
         switch status {
         case .authorizedAlways:
-            log("LOCATION SERVICES: AUTHORIZED")
+            log(AppStatus.locationAuthorized.rawValue)
         case .restricted, .denied:
             Alert.denied()
             NSApplication.shared().terminate(nil)
         case .notDetermined:
-            log("LOCATION SERVICES: STATUS UNKNOWN")
+            log(AppStatus.locationStatusUnknown.rawValue)
         default:
-            log("LOCATION SERVICES: DAFUQ?")
+            log(AppStatus.locationUnknownError.rawValue)
         }
     }
     
     func locationManager(_ manager: CLLocationManager,
                          didUpdateTo newLocation: CLLocation,
                          from oldLocation: CLLocation) {
-        log("LOCATION SERVICES: NEW LOCATION UPDATE")
+        log(AppStatus.locationUpdate.rawValue)
         geoCoder.reverseGeocodeLocation(newLocation) { (placemarks, error) in
             if let places = placemarks, place = places.last where error == nil {
                 if let pl = place.locality, pc = place.country {
@@ -62,23 +62,23 @@ class MainViewController: NSViewController, CLLocationManagerDelegate {
                 if let error = error {
                     log(error)
                 } else {
-                    log("UNKNOWN ERROR IN \(#function)")
+                    log(AppStatus.locationUnknownError.rawValue)
                 }
             }
         }
     }
     
     private func getWeather(city: String, country: String) {
-        log("FETCHING API RESPONSE")
+        log(AppStatus.apiFetching.rawValue)
         meteo.currentWeather(city: city, country: country) { (result) in
             if result.success {
-                log("RECEIVED API RESPONSE")
+                log(AppStatus.apiReceived.rawValue)
                 self.populateView(with: result)
             } else {
                 if let error = result.error {
                     log(error)
                 } else {
-                    log("UNKNOWN ERROR IN \(#function)")
+                    log(AppStatus.apiError.rawValue)
                 }
             }
         }
@@ -97,7 +97,7 @@ class MainViewController: NSViewController, CLLocationManagerDelegate {
                 })
             })
         } else {
-            log("INVALID API RESPONSE")
+            log(AppStatus.apiInvalid.rawValue)
         }
     }
     
