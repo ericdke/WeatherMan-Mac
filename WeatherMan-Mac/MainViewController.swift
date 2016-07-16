@@ -11,6 +11,8 @@ import CoreLocation
 
 class MainViewController: NSViewController, CLLocationManagerDelegate {
     
+    @IBOutlet weak var mainView: MainView!
+    
     let weatherMan = WeatherMan(appID: "d21991d7851f849bfe8cc24d12c795d0")
     let descriptor = WeatherDescriptor()
     let locManager = CLLocationManager()
@@ -26,8 +28,6 @@ class MainViewController: NSViewController, CLLocationManagerDelegate {
                                  userInfo: nil,
                                  repeats: true)
     }
-    
-    @IBOutlet weak var mainView: MainView!
     
     func startMonitoring() {
         locManager.startUpdatingLocation()
